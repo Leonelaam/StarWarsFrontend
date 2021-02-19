@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
-import "../../styles/demo.scss";
+import "../../styles/home.scss";
 
 export const VehiclesProfile = () => {
 	const { store, actions } = useContext(Context);

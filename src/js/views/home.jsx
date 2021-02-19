@@ -1,10 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-
 import { Context } from "../store/appContext";
-
-import "../../styles/demo.scss";
-
+import "../../styles/home.scss";
 import { PersonCard } from "../component/person_card.jsx";
 import { PlanetCard } from "../component/planet_card.jsx";
 import { VehiclesCard } from "../component/vehicles_card.jsx";

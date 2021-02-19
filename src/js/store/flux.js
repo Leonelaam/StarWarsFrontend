@@ -53,7 +53,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			favoritos: fav => {
-				setStore({ favoritos: [...getStore().favoritos, fav] });
+				let alreadyFav = false;
+				let favArr = getStore().favoritos;
+
+				if (favArr.length === 0) {
+					setStore({ favoritos: [...favArr, fav] });
+				} else {
+					favArr.forEach(element => {
+						if (element.uid === fav.uid) {
+							alreadyFav = true;
+						}
+					});
+					if (!alreadyFav) {
+						setStore({ favoritos: [...favArr, fav] });
+					}
+				}
+			
 			},
 			eliminar: elementoEliminar => {
 				setStore({
