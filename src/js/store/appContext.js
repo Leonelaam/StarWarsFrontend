@@ -22,9 +22,9 @@ const injectContext = PassedComponent => {
 		);
 
 		useEffect(() => {
-			state.actions.getPeople("https://www.swapi.tech/api/people");
-			state.actions.getPlanets("https://www.swapi.tech/api/planets");
-			state.actions.getVehicles("https://www.swapi.tech/api/starships");
+			state.actions.getPeople("https://3000-bronze-fox-8gjx0fei.ws-us03.gitpod.io/people");
+			state.actions.getPlanets("https://3000-bronze-fox-8gjx0fei.ws-us03.gitpod.io/planet");
+			state.actions.getVehicles("https://3000-bronze-fox-8gjx0fei.ws-us03.gitpod.io/vehicle");
 
 			/**
 			 * EDIT THIS!

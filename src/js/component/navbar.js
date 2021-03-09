@@ -1,9 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
+import { objectOf } from "prop-types";
+import { Redirect } from "react-router-dom";
 
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
+	// console.log(store.actual_user_2);
 
 	return (
 		<nav className="navbar navbar-light bg-primary">
@@ -20,13 +23,56 @@ export const Navbar = () => {
 				</a>
 			</Link>
 
-			<Link to="/" className="badge badge-info" style={{ fontSize: "30px" }}>
-				Home
-			</Link>
+			<div className="dropdown">
+				<button
+					className="btn btn-secondary dropdown-toggle bg-danger"
+					style={{ fontSize: "25px" }}
+					type="button"
+					id="dropdownMenuButton"
+					data-toggle="dropdown"
+					aria-haspopup="true"
+					aria-expanded="false">
+					Usuario: {store.actual_user && `${store.actual_user} ${store.actual_user_2}`}
+				</button>
+				<div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+					<div
+						className="dropdown-item"
+						onClick={() => {
+							actions.logOut();
+						}}>
+						Logout
+					</div>
+				</div>
+				{store.redirect_logout ? <Redirect to="/" /> : null}
+			</div>
+
+			<div className="dropdown">
+				<button
+					className="btn btn-secondary dropdown-toggle bg-danger"
+					style={{ fontSize: "25px" }}
+					type="button"
+					id="dropdownMenuButton"
+					data-toggle="dropdown"
+					aria-haspopup="true"
+					aria-expanded="false">
+					Menu
+				</button>
+				<div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+					<Link to="/" className="dropdown-item">
+						Home
+					</Link>
+					<Link to="/login" className="dropdown-item">
+						Login
+					</Link>
+					<Link to="/register" className="dropdown-item">
+						Registrarse
+					</Link>
+				</div>
+			</div>
 
 			<div className="dropdown dropleft">
 				<button
-					className="btn btn-secondary dropdown-toggle bg-info"
+					className="btn btn-secondary dropdown-toggle bg-danger"
 					style={{ fontSize: "25px" }}
 					type="button"
 					id="dropdownMenuButton"

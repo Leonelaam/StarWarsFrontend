@@ -1,7 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+
 import { Context } from "../store/appContext";
+
 import "../../styles/home.scss";
+
 import { PersonCard } from "../component/person_card.jsx";
 import { PlanetCard } from "../component/planet_card.jsx";
 import { VehiclesCard } from "../component/vehicles_card.jsx";
@@ -22,7 +25,7 @@ export const Home = () => {
 				<div className="col-md-12">
 					<div className="card-deck">
 						{!!store.peoples &&
-							store.peoples.results.map((item, index) => {
+							store.peoples.map((item, index) => {
 								let liked = false;
 								store.favoritos.forEach(element => {
 									if (element.uid === item.uid) {
@@ -35,6 +38,7 @@ export const Home = () => {
 				</div>
 			</div>
 
+			{/* Boton */}
 			<div className="row">
 				<div className="col-md-6">
 					<button
@@ -42,18 +46,17 @@ export const Home = () => {
 							actions.getPeople(store.peoples.previous);
 						}}
 						type="button"
-						className="btn btn-info miBoton">
+						className="btn btn-danger miBoton">
 						Previous
 					</button>
 				</div>
-
 				<div className="col-md-6">
 					<button
 						onClick={() => {
 							actions.getPeople(store.peoples.next);
 						}}
 						type="button"
-						className="btn btn-info">
+						className="btn btn-danger">
 						Next
 					</button>
 				</div>
@@ -70,7 +73,7 @@ export const Home = () => {
 				<div className="col-md-12">
 					<div className="card-deck">
 						{!!store.planets &&
-							store.planets.results.map((item, index) => {
+							store.planets.map((item, index) => {
 								let liked = false;
 								store.favoritos.forEach(element => {
 									if (element.uid === item.uid) {
@@ -90,23 +93,21 @@ export const Home = () => {
 							actions.getPlanets(store.planets.previous);
 						}}
 						type="button"
-						className="btn btn-info miBoton">
+						className="btn btn-danger miBoton">
 						Previous
 					</button>
 				</div>
-
 				<div className="col-md-6">
 					<button
 						onClick={() => {
 							actions.getPlanets(store.planets.next);
 						}}
 						type="button"
-						className="btn btn-info">
+						className="btn btn-danger">
 						Next
 					</button>
 				</div>
 			</div>
-
 			<br />
 
 			{/* Aqui van las tarjetas de los vehiculos */}
@@ -120,7 +121,7 @@ export const Home = () => {
 				<div className="col-md-12">
 					<div className="card-deck">
 						{!!store.vehicles &&
-							store.vehicles.results.map((item, index) => {
+							store.vehicles.map((item, index) => {
 								let liked = false;
 								store.favoritos.forEach(element => {
 									if (element.uid === item.uid) {
@@ -133,31 +134,26 @@ export const Home = () => {
 					</div>
 				</div>
 			</div>
-
 			<div className="row">
-				<div className="col-md-6">
+				<div className="col-md-12 d-flex justify-content-center">
 					<button
 						onClick={() => {
 							actions.getVehicles(store.vehicles.previous);
 						}}
 						type="button"
-						className="btn btn-info miBoton">
+						className="btn btn-danger mr-5">
 						Previous
 					</button>
-				</div>
-
-				<div className="col-md-6">
 					<button
 						onClick={() => {
 							actions.getVehicles(store.vehicles.next);
 						}}
 						type="button"
-						className="btn btn-info">
+						className="btn btn-danger mf-5">
 						Next
 					</button>
 				</div>
 			</div>
-
 			<br />
 		</div>
 	);

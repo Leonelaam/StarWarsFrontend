@@ -9,6 +9,7 @@ export const PersonProfile = () => {
 
 	let [detallesPersona, setDetallesPersona] = useState(null);
 	useEffect(() => {
+		console.log(params.id); //para el
 		fetch("https://www.swapi.tech/api/people/" + params.id)
 			.then(response => response.json())
 			.then(data => {
